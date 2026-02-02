@@ -1,0 +1,27 @@
+<main class="page">
+  <h1>Content Exporter</h1>
+
+  <section class="content-grid">
+    @for (content of contentList(); track content.id) {
+    <article class="content-tile">
+      <h2>{{ content.id }}</h2>
+
+      <label>
+        Format
+        <select [(ngModel)]="content.selectedFormat">
+          <option value="pdf">pdf</option>
+          <option value="zip">zip</option>
+          <option value="csv">csv</option>
+        </select>
+      </label>
+
+      <button
+        type="button"
+        (click)="exportContent(content.id, content.selectedFormat ?? 'pdf')"
+      >
+        Export
+      </button>
+    </article>
+    }
+  </section>
+</main>
